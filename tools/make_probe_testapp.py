@@ -34,8 +34,7 @@ testApps:
     name: MPC Sample RE Probe
 """
 
-SCRIPT = textwrap.dedent(r'''\
-    #!/bin/sh
+SCRIPT = textwrap.dedent(r'''#!/bin/sh
     # MPC-Sample-RE harmless discovery probe.
     # No flash writes, package installation, account changes, or SSH changes.
 
