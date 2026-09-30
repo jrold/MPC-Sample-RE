@@ -16,6 +16,8 @@ Initial target: official **MPC Sample 1.3.0 Updater**.
 - [x] Identify the main AArch64 MPC Sample application
 - [x] Confirm substantial JUCE/VST/MPC Plugin Program code is compiled into it
 - [ ] Map AC50 plugin feature gates / control flow
+- [x] Identify a non-flashing stock test-app development path
+- [ ] Confirm unsigned AC50 V2 test-app execution on physical hardware
 - [ ] Determine a safe development-key or verification-bypass path
 - [ ] Map USB update protocol and raw partition-write protections
 - [ ] Build a reproducible modified-image workflow
@@ -56,7 +58,7 @@ The firmware is not merely checksummed. The payload hashes live in an RSA-signed
 
 So editing rootfs + updating its SHA is easy; **making stock verification accept that edited header is the current blocker**.
 
-See [`docs/firmware-1.3.0.md`](docs/firmware-1.3.0.md) for the current map and [`docs/plugin-host.md`](docs/plugin-host.md) for the plugin investigation.
+See [`docs/firmware-1.3.0.md`](docs/firmware-1.3.0.md) for the current map, [`docs/plugin-host.md`](docs/plugin-host.md) for the plugin investigation, and [`docs/dev-access.md`](docs/dev-access.md) for the stock unsigned test-app development path.
 
 ## Repository policy
 
