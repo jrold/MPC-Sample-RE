@@ -1,0 +1,33 @@
+/usr/lib/vst;/usr/local/lib/vst;~/.vst
+Attempting to load VST: 
+Bassline
+Creating VST instance: 
+EngineVst::close
+EngineVst::delayedLoadInitialPreset
+EngineVst::editorOpen
+EngineVst::getChunk
+EngineVst::loadDefaultProgram
+EngineVst::loadProgram
+EngineVst::setChunk
+EngineVst::~EngineVst
+Error Scanning VST
+ExpansionManager.showVST
+ExpansionManager.showVST3
+FMSynth
+GranularSynth
+Initialising VST: 
+JUCE v5.4.4
+MPC:Bassline
+MPC:TubeSynth
+Plugin Program
+Plugin Scan
+Plugin Scanning
+Plugin scan failed
+Plugin scan result
+SerialisablePluginProgramData
+TubeSynth
+VST Folders
+VSTPluginMain
+VST_PATH
+VintageBassline
+VstPlugin::beforeDelete
