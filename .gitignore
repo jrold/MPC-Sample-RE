@@ -1,0 +1,12 @@
+# Do not commit vendor firmware or extracted proprietary payloads.
+*.exe
+*.img
+*.xz
+*.fit
+*.rbin
+*.7z
+rootfs/
+boot/
+recovery/
+work/
+__pycache__/
