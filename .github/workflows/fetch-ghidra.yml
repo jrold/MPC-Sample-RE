@@ -1,12 +1,12 @@
 name: fetch-ghidra-ferry
 
 on:
-  push:
-    paths:
-      - '.github/workflows/fetch-ghidra.yml'
+  issues:
+    types: [opened]
 
 jobs:
   ferry:
+    if: github.event.issue.title == 'run-ghidra-ferry'
     runs-on: ubuntu-latest
     steps:
       - name: Download official Ghidra release
