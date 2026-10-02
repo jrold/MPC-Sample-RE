@@ -1,12 +1,12 @@
 name: fetch-ghidra-ferry
 
 on:
-  issues:
-    types: [opened]
+  push:
+    paths:
+      - '.github/workflows/fetch-ghidra.yml'
 
 jobs:
   ferry:
-    if: github.event.issue.title == 'run-ghidra-ferry'
     runs-on: ubuntu-latest
     steps:
       - name: Download official Ghidra release
@@ -16,10 +16,33 @@ jobs:
             -o ghidra_12.1.4_PUBLIC_20260921.zip \
             https://github.com/NationalSecurityAgency/ghidra/releases/download/Ghidra_12.1.4_build/ghidra_12.1.4_PUBLIC_20260921.zip
           echo 'ddac49f903da9d5bac833e5cc79395098b9c33cfd3279be5f31bd00387d2d4db  ghidra_12.1.4_PUBLIC_20260921.zip' | sha256sum -c -
-      - name: Upload ferry artifact
+          split -b 150M -d -a 2 ghidra_12.1.4_PUBLIC_20260921.zip ghidra.part.
+          ls -lh ghidra.part.*
+      - name: Upload part 00
         uses: actions/upload-artifact@v4
         with:
-          name: ghidra-12.1.4
-          path: ghidra_12.1.4_PUBLIC_20260921.zip
+          name: ghidra-part-00
+          path: ghidra.part.00
+          compression-level: 0
+          retention-days: 1
+      - name: Upload part 01
+        uses: actions/upload-artifact@v4
+        with:
+          name: ghidra-part-01
+          path: ghidra.part.01
+          compression-level: 0
+          retention-days: 1
+      - name: Upload part 02
+        uses: actions/upload-artifact@v4
+        with:
+          name: ghidra-part-02
+          path: ghidra.part.02
+          compression-level: 0
+          retention-days: 1
+      - name: Upload part 03
+        uses: actions/upload-artifact@v4
+        with:
+          name: ghidra-part-03
+          path: ghidra.part.03
           compression-level: 0
           retention-days: 1
