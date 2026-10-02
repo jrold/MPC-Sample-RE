@@ -1,4 +1,4 @@
-name: polyend-tool-probe
+name: polyend-tool-ferry
 
 on:
   push:
@@ -6,25 +6,21 @@ on:
       - '.github/workflows/fetch-ghidra.yml'
 
 jobs:
-  probe:
+  ferry:
     runs-on: ubuntu-latest
     steps:
-      - name: Probe Polyend Tool download page
+      - name: Download Polyend Tool macOS 1.2.1
         run: |
           set -euxo pipefail
-          python3 - <<'PY'
-          import urllib.request
-          url='https://polyend.com/downloads/polyend-tool-downloads/'
-          req=urllib.request.Request(url,headers={'User-Agent':'Mozilla/5.0'})
-          data=urllib.request.urlopen(req,timeout=30).read()
-          open('polyend-tool-page.html','wb').write(data)
-          print(data.decode('utf-8','replace'))
-          PY
-          echo '--- LINKS ---'
-          grep -Eoi 'href=["'"'][^"'"']+["'"']' polyend-tool-page.html | sed -E 's/^href=["'"']|["'"']$//g' | grep -Ei 'polyend|tool|download|zip|dmg|exe|pkg' || true
-      - name: Upload page
+          curl -fL --retry 5 --retry-delay 2 \
+            -o Polyend_Tool_v1.2.1_macOS.zip \
+            https://polyend-website.fra1.digitaloceanspaces.com/wp-content/uploads/2023/11/01084148/Polyend_Tool_v1.2.1_macOS.zip
+          sha256sum Polyend_Tool_v1.2.1_macOS.zip
+          ls -lh Polyend_Tool_v1.2.1_macOS.zip
+      - name: Upload Polyend Tool
         uses: actions/upload-artifact@v4
         with:
-          name: polyend-tool-page
-          path: polyend-tool-page.html
+          name: polyend-tool-macos-1.2.1
+          path: Polyend_Tool_v1.2.1_macOS.zip
+          compression-level: 0
           retention-days: 1
